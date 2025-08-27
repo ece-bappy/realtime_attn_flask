@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RFID Logs (Realtime)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 RFID Access Logs</h1>
+            <p>Real-time monitoring system</p>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalScans">0</div>
+                    <div class="stat-label">Total Scans</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="uniqueUsers">0</div>
+                    <div class="stat-label">Unique Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayScans">0</div>
+                    <div class="stat-label">Today's Scans</div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="logTable">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Card UID</th>
+                            <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-header">
+            <div class="toast-icon">✓</div>
+            <div class="toast-title">New Scan Detected</div>
+        </div>
+        <div class="toast-message" id="toastMessage"></div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
